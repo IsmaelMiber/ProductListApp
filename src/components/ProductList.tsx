@@ -234,12 +234,14 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   listContent: {
-    padding: 16,
+    paddingHorizontal: 8,
+    paddingVertical: 16,
     paddingTop: 8,
     flexGrow: 1,
   },
   row: {
     justifyContent: 'space-between',
+    gap: 16,
   },
   emptyContainer: {
     flex: 1,

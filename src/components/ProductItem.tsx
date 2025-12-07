@@ -5,7 +5,6 @@ import {
   Image,
   TouchableOpacity,
   StyleSheet,
-  useWindowDimensions,
   Platform,
 } from 'react-native';
 import Product from '../types/product';
@@ -20,10 +19,7 @@ function ProductItem({
   onPress: (item: Product) => void;
   isSelected: boolean;
 }) {
-  const { width } = useWindowDimensions();
   const colors = useThemeColors();
-  const isPortrait = useWindowDimensions().height > width;
-  const cardWidth = isPortrait ? width - 32 : (width - 48) / 2;
 
   const formatPrice = (price: number) => {
     return `$${price.toFixed(2)}`;
@@ -36,7 +32,6 @@ function ProductItem({
       style={[
         styles.card,
         {
-          width: cardWidth,
           backgroundColor: colors.cardBackground,
           borderColor: isSelected ? colors.selectedBorder : colors.cardBorder,
           borderWidth: isSelected ? 2 : 1,
@@ -136,7 +131,10 @@ const styles = StyleSheet.create({
   card: {
     borderRadius: 12,
     marginBottom: 16,
+    marginHorizontal: 8,
     overflow: 'hidden',
+    flexGrow: 1,
+    gap: 10,
   },
   image: {
     width: '100%',
