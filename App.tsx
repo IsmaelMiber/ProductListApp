@@ -6,10 +6,7 @@
  */
 
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import ProductList from './src/components/ProductList';
 import { useThemeColors } from './src/theme/colors';
 
@@ -19,13 +16,14 @@ function App() {
   return (
     <SafeAreaProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
+      <SafeAreaView style={{ flex: 1 }}>
+        <AppContent />
+      </SafeAreaView>
     </SafeAreaProvider>
   );
 }
 
 function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
   const colors = useThemeColors();
 
   return (
@@ -33,7 +31,6 @@ function AppContent() {
       style={[
         styles.container,
         {
-          top: safeAreaInsets.top,
           backgroundColor: colors.background,
         },
       ]}
