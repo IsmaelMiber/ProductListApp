@@ -11,6 +11,7 @@ import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 import ProductList from './src/components/ProductList';
+import { useThemeColors } from './src/theme/colors';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -25,9 +26,18 @@ function App() {
 
 function AppContent() {
   const safeAreaInsets = useSafeAreaInsets();
+  const colors = useThemeColors();
 
   return (
-    <View style={[styles.container, { top: safeAreaInsets.top }]}>
+    <View
+      style={[
+        styles.container,
+        {
+          top: safeAreaInsets.top,
+          backgroundColor: colors.background,
+        },
+      ]}
+    >
       <ProductList />
     </View>
   );
